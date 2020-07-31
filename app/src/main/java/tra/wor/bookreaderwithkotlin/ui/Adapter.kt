@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_sports_name.view.*
+import kotlinx.android.synthetic.main.layout_programing_book.view.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.pojo.items
 
@@ -20,9 +20,9 @@ class Adapter (  var conxt: Context): RecyclerView.Adapter<Adapter.viewholder>()
     }
     class viewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun find(item: items){
-            Picasso.get().load(item.volumeInfo.imageLinks.thumbnail).into(itemView.image_prog2)
-            itemView.title_prog2.text=item.volumeInfo.authors.get(0).toString()
-            itemView.name_prog2.text=item.volumeInfo.title
+            Picasso.get().load(item.volumeInfo.imageLinks.thumbnail).into(itemView.image_prog)
+            itemView.title_prog.text=item.volumeInfo.authors.get(0).toString()
+            itemView.name_prog.text=item.volumeInfo.title
 
 
 
@@ -35,7 +35,7 @@ class Adapter (  var conxt: Context): RecyclerView.Adapter<Adapter.viewholder>()
             LayoutInflater.from(
                 conxt
             ).inflate(
-                R.layout.layout_sports_name,
+                R.layout.layout_programing_book,
                 parent,
                 false
             )
@@ -52,14 +52,16 @@ class Adapter (  var conxt: Context): RecyclerView.Adapter<Adapter.viewholder>()
         holder.itemView.setOnClickListener {
             val intent = Intent(conxt, showbook::class.java)
              intent.putExtra("image",items.volumeInfo.imageLinks.thumbnail.toString())
-            intent.putExtra("title",holder.itemView.title_prog2.toString())
-            intent.putExtra("name",holder.itemView.name_prog2.toString())
+            intent.putExtra("title",items.volumeInfo.title.toString())
+            intent.putExtra("author",items.volumeInfo.authors.get(0).toString())
              if (items.volumeInfo.description==null){
                  intent.putExtra("des","No Description")
              }
             else {
-                 intent.putExtra("des", items.volumeInfo.description.toString())
+                 intent.putExtra("des",
+                     items.volumeInfo.description.toString())
              }
+
             conxt.startActivity(intent)
         }
     }

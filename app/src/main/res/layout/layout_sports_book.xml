@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+            <ImageView
+                android:id="@+id/image_sports"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_sports_book"
+                android:padding="20dp"
+                app:srcCompat="@drawable/soccer" />
+
+            <TextView
+                android:id="@+id/name_sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000"
+                android:padding="5dp"
+                android:fontFamily="@font/wg"
+                android:text="Basketball" />
+
+
+</LinearLayout>

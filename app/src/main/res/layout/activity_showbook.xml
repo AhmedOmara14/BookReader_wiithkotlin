@@ -64,6 +64,16 @@
             android:textColor="@android:color/background_dark"
             android:textSize="22sp"
             />
+        <ImageView
+            android:id="@+id/fav"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_favorite_24"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp">
+
+        </ImageView>
+
 
     </LinearLayout>
 
