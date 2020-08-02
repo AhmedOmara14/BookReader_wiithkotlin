@@ -1,6 +1,5 @@
-package tra.wor.bookreaderwithkotlin.ui
+package tra.wor.bookreaderwithkotlin.ui.adapter
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_show_sports_book.view.*
 import tra.wor.bookreaderwithkotlin.R
-import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.pojo.favorite
-import tra.wor.bookreaderwithkotlin.pojo.items
+import tra.wor.bookreaderwithkotlin.ui.showbook
 
 class AdapterOfFavorite(var context: Context) :
     RecyclerView.Adapter<AdapterOfFavorite.viewholder>() {
@@ -41,8 +39,8 @@ class AdapterOfFavorite(var context: Context) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AdapterOfFavorite.viewholder {
-        return AdapterOfFavorite.viewholder(
+    ): viewholder {
+        return viewholder(
             LayoutInflater.from(
                 context
             ).inflate(
@@ -58,7 +56,7 @@ class AdapterOfFavorite(var context: Context) :
         return list.size
     }
 
-    override fun onBindViewHolder(holder: AdapterOfFavorite.viewholder, position: Int) {
+    override fun onBindViewHolder(holder: viewholder, position: Int) {
         val items = list[position]
         holder.find(items)
         var image: String

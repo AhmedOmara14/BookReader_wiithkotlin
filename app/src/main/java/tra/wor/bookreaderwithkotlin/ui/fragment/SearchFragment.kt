@@ -4,20 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_showbookofsports.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.pojo.items
-import tra.wor.bookreaderwithkotlin.ui.AdapterOfShowSportsBook
+import tra.wor.bookreaderwithkotlin.ui.adapter.AdapterOfShowSportsBook
 
 
 class SearchFragment : Fragment() {
@@ -72,7 +67,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun inalizeation() {
-        adapterOfShowSportsBook = context?.let { AdapterOfShowSportsBook(it) }!!
+        adapterOfShowSportsBook = context?.let {
+            AdapterOfShowSportsBook(
+                it
+            )
+        }!!
 
         recycler_search.setLayoutManager(
             LinearLayoutManager(

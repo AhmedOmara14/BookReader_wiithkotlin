@@ -21,8 +21,7 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.pojo.favorite
-import tra.wor.bookreaderwithkotlin.pojo.items
-import tra.wor.bookreaderwithkotlin.ui.AdapterOfFavorite
+import tra.wor.bookreaderwithkotlin.ui.adapter.AdapterOfFavorite
 
 
 class FavoriteFragment() : Fragment() , KodeinAware{
@@ -55,7 +54,11 @@ class FavoriteFragment() : Fragment() , KodeinAware{
 
     private fun inialization() {
         viewModel = ViewModelProvider(this, factory).get(FavViewModel::class.java)
-        adapterOfFavorite = context?.let { AdapterOfFavorite(it) }!!
+        adapterOfFavorite = context?.let {
+            AdapterOfFavorite(
+                it
+            )
+        }!!
         rec_fav.setLayoutManager(
             LinearLayoutManager(
                 context,

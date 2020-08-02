@@ -1,4 +1,4 @@
-package tra.wor.bookreaderwithkotlin.ui
+package tra.wor.bookreaderwithkotlin.ui.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_programing_book.view.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.pojo.items
+import tra.wor.bookreaderwithkotlin.ui.showbook
 
 class Adapter (  var conxt: Context): RecyclerView.Adapter<Adapter.viewholder>() {
 

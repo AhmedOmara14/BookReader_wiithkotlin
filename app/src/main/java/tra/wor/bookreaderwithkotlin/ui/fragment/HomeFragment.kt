@@ -1,21 +1,19 @@
 package tra.wor.bookreaderwithkotlin.ui.fragment
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.pojo.sportsbook
-import tra.wor.bookreaderwithkotlin.ui.Adapter
-import tra.wor.bookreaderwithkotlin.ui.AdapterOfSports
+import tra.wor.bookreaderwithkotlin.ui.adapter.Adapter
+import tra.wor.bookreaderwithkotlin.ui.adapter.AdapterOfSports
 
 
 class HomeFragment : Fragment() {
@@ -38,12 +36,20 @@ class HomeFragment : Fragment() {
         intalizeation()
 
         repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { items ->
-            adapter = context?.let { Adapter(it) }!!
+            adapter = context?.let {
+                Adapter(
+                    it
+                )
+            }!!
             adapter.setlist(items)
             recycler_programming.adapter = adapter;
         })
         additem()
-        adapterOfSports = context?.let { AdapterOfSports(it) }!!
+        adapterOfSports = context?.let {
+            AdapterOfSports(
+                it
+            )
+        }!!
         adapterOfSports.setlist(listsportsbook)
         recycler_sports_book.adapter = adapterOfSports
 

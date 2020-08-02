@@ -1,20 +1,15 @@
 package tra.wor.bookreaderwithkotlin.ui.main
 
 import android.os.Bundle
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.pojo.items
-import tra.wor.bookreaderwithkotlin.ui.Adapter
+import tra.wor.bookreaderwithkotlin.ui.adapter.Adapter
 import tra.wor.bookreaderwithkotlin.ui.fragment.FavoriteFragment
 import tra.wor.bookreaderwithkotlin.ui.fragment.HomeFragment
 import tra.wor.bookreaderwithkotlin.ui.fragment.SearchFragment

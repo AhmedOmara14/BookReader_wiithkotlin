@@ -1,16 +1,16 @@
-package tra.wor.bookreaderwithkotlin.ui
+package tra.wor.bookreaderwithkotlin.ui.adapter
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_sports_book.view.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.pojo.sportsbook
+import tra.wor.bookreaderwithkotlin.ui.showbookofsports
 
 class AdapterOfSports(var context: Context) : RecyclerView.Adapter<AdapterOfSports.viewholder>() {
 
@@ -42,7 +42,8 @@ class AdapterOfSports(var context: Context) : RecyclerView.Adapter<AdapterOfSpor
         holder.find(items)
 
         holder.itemView.setOnClickListener {
-            val intent=Intent(context,showbookofsports::class.java)
+            val intent=Intent(context,
+                showbookofsports::class.java)
             intent.putExtra("name",items.title_book)
             context.startActivity(intent)
         }

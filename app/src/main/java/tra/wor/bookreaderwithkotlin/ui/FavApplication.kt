@@ -1,4 +1,4 @@
-package tra.wor.bookreaderwithkotlin
+package tra.wor.bookreaderwithkotlin.ui
 
 import android.app.Application
 import com.vinay.shoppinglist.data.repositories.FavRepository

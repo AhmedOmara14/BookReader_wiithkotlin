@@ -1,4 +1,4 @@
-package tra.wor.bookreaderwithkotlin.ui
+package tra.wor.bookreaderwithkotlin.ui.adapter
 
 import android.app.Application
 import android.content.Context
@@ -6,18 +6,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_programing_book.view.*
 import kotlinx.android.synthetic.main.layout_show_sports_book.view.*
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
-import tra.wor.bookreaderwithkotlin.pojo.favorite
 import tra.wor.bookreaderwithkotlin.pojo.items
+import tra.wor.bookreaderwithkotlin.ui.showbook
 
 class AdapterOfShowSportsBook(var context: Context) :
     RecyclerView.Adapter<AdapterOfShowSportsBook.viewholder>() {
@@ -54,8 +49,8 @@ class AdapterOfShowSportsBook(var context: Context) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AdapterOfShowSportsBook.viewholder {
-        return AdapterOfShowSportsBook.viewholder(
+    ): viewholder {
+        return viewholder(
             LayoutInflater.from(
                 context
             ).inflate(
@@ -71,7 +66,7 @@ class AdapterOfShowSportsBook(var context: Context) :
         return list.size
     }
 
-    override fun onBindViewHolder(holder: AdapterOfShowSportsBook.viewholder, position: Int) {
+    override fun onBindViewHolder(holder: viewholder, position: Int) {
         val items = list[position]
         holder.find(items)
         var image: String
