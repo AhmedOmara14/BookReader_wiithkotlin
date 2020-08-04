@@ -11,5 +11,10 @@ import java.util.*
 
 interface apiinterface {
     @GET("volumes")
-    fun getposts(@Query("q")q:String):Observable<programming>
+
+    //Coroutine
+    suspend fun getposts(@Query("q")q:String):Response<programming>
+
+    //Rxjava
+   // fun getposts(@Query("q")q:String):Observable<programming>
 }

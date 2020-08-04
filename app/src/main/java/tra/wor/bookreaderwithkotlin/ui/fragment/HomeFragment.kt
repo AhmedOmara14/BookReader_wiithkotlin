@@ -8,7 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.pojo.sportsbook
@@ -35,15 +41,18 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         intalizeation()
 
-        repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { items ->
-            adapter = context?.let {
-                Adapter(
-                    it
-                )
-            }!!
-            adapter.setlist(items)
-            recycler_programming.adapter = adapter;
-        })
+        GlobalScope.launch (Dispatchers.Main){
+            repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { items ->
+                adapter = context?.let {
+                    Adapter(
+                        it
+                    )
+                }!!
+                adapter.setlist(items)
+                recycler_programming.adapter = adapter;
+            })
+        }
+
         additem()
         adapterOfSports = context?.let {
             AdapterOfSports(

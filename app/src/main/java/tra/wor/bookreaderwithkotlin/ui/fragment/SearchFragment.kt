@@ -9,6 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.pojo.items
@@ -34,34 +37,38 @@ class SearchFragment : Fragment() {
 
         btn_title.setOnClickListener {
             list.clear()
-            repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { item->
-               var x = 0
-               while (x < item.size) {
-                   if (item.get(x).volumeInfo.title.toString().contains(search_edittext.text.toString().toLowerCase())){
-                        list.add(item.get(x))
-                       adapterOfShowSportsBook.setlist(list)
-                       recycler_search.adapter=adapterOfShowSportsBook
-                   }
-                   x++
-               }
-           })
 
+            GlobalScope.launch(Dispatchers.Main) {
+                repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { item ->
+                    var x = 0
+                    while (x < item.size) {
+                        if (item.get(x).volumeInfo.title.toString().contains(search_edittext.text.toString().toLowerCase())){
+                            list.add(item.get(x))
+                            adapterOfShowSportsBook.setlist(list)
+                            recycler_search.adapter=adapterOfShowSportsBook
+                        }
+                        x++
+                    }
+                })
+            }
 
         }
         btn_author.setOnClickListener {
             list.clear()
-            repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { item->
-                var x = 0
-                while (x < item.size) {
-                    if (item.get(x).volumeInfo.authors.get(0).toString().contains(search_edittext.text.toString().toLowerCase())){
-                        list.add(item.get(x))
-                        adapterOfShowSportsBook.setlist(list)
-                        recycler_search.adapter=adapterOfShowSportsBook
+            GlobalScope.launch(Dispatchers.Main) {
+                repositry.getdata_book("programming").observe(viewLifecycleOwner, Observer { item->
+                    var x = 0
+                    while (x < item.size) {
+                        if (item.get(x).volumeInfo.authors.get(0).toString().contains(search_edittext.text.toString().toLowerCase())){
+                            list.add(item.get(x))
+                            adapterOfShowSportsBook.setlist(list)
+                            recycler_search.adapter=adapterOfShowSportsBook
+                        }
+                        x++
                     }
-                    x++
-                }
-            })
-
+                })
+            }
+            
 
         }
     }

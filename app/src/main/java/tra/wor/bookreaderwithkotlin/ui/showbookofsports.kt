@@ -6,6 +6,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_showbookofsports.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import tra.wor.bookreaderwithkotlin.R
 import tra.wor.bookreaderwithkotlin.data.Repositry
 import tra.wor.bookreaderwithkotlin.ui.adapter.AdapterOfShowSportsBook
@@ -20,10 +23,13 @@ class showbookofsports : AppCompatActivity() {
 
         inalization()
         categry_sports = intent.getStringExtra("name").toString()
-        repositry.getdata_book(categry_sports).observe(this, Observer { item ->
-            adapterOfShowSportsBook.setlist(item)
-            recycler_show_sports_book.adapter = adapterOfShowSportsBook
-        })
+        GlobalScope.launch(Dispatchers.Main) {
+            repositry.getdata_book(categry_sports).observe(this@showbookofsports, Observer { item ->
+                adapterOfShowSportsBook.setlist(item)
+                recycler_show_sports_book.adapter = adapterOfShowSportsBook
+            })
+        }
+
         back.setOnClickListener {
             finish()
         }
@@ -35,7 +41,7 @@ class showbookofsports : AppCompatActivity() {
         repositry = ViewModelProviders.of(this).get(Repositry::class.java)
         adapterOfShowSportsBook =
             AdapterOfShowSportsBook(this)
-            adapterOfShowSportsBook.setRepositry(repositry)
+        adapterOfShowSportsBook.setRepositry(repositry)
         adapterOfShowSportsBook.setapp(application)
         recycler_show_sports_book.setLayoutManager(
             LinearLayoutManager(
